@@ -1,5 +1,7 @@
 package com.jpmc.midascore; // Declares the package location of this class
 
+import com.jpmc.midascore.foundation.Transaction; // Imports the Transaction class from the foundation package so we can use it in this class
+
 import org.springframework.kafka.annotation.KafkaListener; // Lets us listen to Kafka topics
 import org.springframework.stereotype.Component; // Marks this class as a Spring-managed component (bean)
 import org.springframework.beans.factory.annotation.Value; // Allows us to inject values from application.yml

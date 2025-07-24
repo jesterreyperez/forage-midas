@@ -1,2 +1,17 @@
+# Custom configuration section defined by the developers
 general:
+  # This defines the Kafka topic name you'll subscribe to or send messages to.
+  # You can access this in your Java code using @Value("${general.kafka-topic}")
   kafka-topic: test-topic
+
+# This is the Spring Boot configuration section for Kafka
+spring:
+  kafka:
+    producer:
+      # This tells Kafka how to serialize the key of the message.
+      # StringSerializer means the key will be handled as a string.
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+
+      # This tells Kafka how to serialize the value (your actual data payload).
+      # JsonSerializer will convert your Java object (like Transaction) into JSON.
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
