@@ -1,11 +1,11 @@
-package com.jpmc.midascore.entity; // Update this if your entities are in a different package
+package com.jpmc.midascore.entity; // This is where the file belongs
 
 import jakarta.persistence.*;
 
-@Entity // This marks the class as a table in the database
+@Entity // Marks this class as a table in the database
 public class TransactionRecord {
 
-    @Id // Marks this as the primary key
+    @Id // Primary key of the table
     @GeneratedValue(strategy = GenerationType.IDENTITY) // Auto-generates the ID
     private Long id;
 
@@ -17,7 +17,8 @@ public class TransactionRecord {
 
     private float amount; // The amount of money transferred
 
-    // Getters and setters below
+    // ===== Getters and Setters =====
+
     public Long getId() {
         return id;
     }
