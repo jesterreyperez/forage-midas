@@ -1,49 +1,65 @@
-package com.jpmc.midascore.entity; // This is where the file belongs
+package com.jpmc.midascore.entity; // This defines which package (folder group) this class is part of
 
-import jakarta.persistence.*;
+import jakarta.persistence.*; // Imports annotations used for database mapping (JPA)
 
-@Entity // Marks this class as a table in the database
+// This class will represent a row in the database table called "transaction_record"
+@Entity // Tells Spring this class is a database entity (a table)
 public class TransactionRecord {
 
-    @Id // Primary key of the table
-    @GeneratedValue(strategy = GenerationType.IDENTITY) // Auto-generates the ID
+    // This is the primary key (unique ID) for each transaction in the database
+    @Id // Marks 'id' as the primary key
+    @GeneratedValue(strategy = GenerationType.IDENTITY) // The database will auto-generate the ID
     private Long id;
 
-    @ManyToOne // Many transactions can have one sender
+    // This refers to the sender of the transaction
+    @ManyToOne // Many transactions can have the same sender
     private UserRecord sender;
 
-    @ManyToOne // Many transactions can have one recipient
+    // This refers to the recipient of the transaction
+    @ManyToOne // Many transactions can have the same recipient
     private UserRecord recipient;
 
-    private float amount; // The amount of money transferred
+    // This is the amount of money being transferred in the transaction
+    private float amount;
 
-    // ===== Getters and Setters =====
+    // ✅ This is the incentive amount added to the recipient's balance
+    private float incentive;
+
+    // ===== Getters and Setters (used to access and update the private fields) =====
 
     public Long getId() {
-        return id;
+        return id; // Returns the transaction ID
     }
 
     public UserRecord getSender() {
-        return sender;
+        return sender; // Returns the sender
     }
 
     public void setSender(UserRecord sender) {
-        this.sender = sender;
+        this.sender = sender; // Sets the sender
     }
 
     public UserRecord getRecipient() {
-        return recipient;
+        return recipient; // Returns the recipient
     }
 
     public void setRecipient(UserRecord recipient) {
-        this.recipient = recipient;
+        this.recipient = recipient; // Sets the recipient
     }
 
     public float getAmount() {
-        return amount;
+        return amount; // Returns the transaction amount
     }
 
     public void setAmount(float amount) {
-        this.amount = amount;
+        this.amount = amount; // Sets the transaction amount
+    }
+
+    public float getIncentive () {
+        return incentive; // Returns the incentive amount
+    }
+
+    public void setIncentive(float incentive) {
+        this.incentive = incentive; // Sets the incentive amount
     }
 }
